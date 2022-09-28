@@ -1,1 +1,1 @@
-# Imaginarize
+# Imagine
