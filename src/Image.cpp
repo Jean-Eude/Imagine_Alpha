@@ -1,13 +1,11 @@
-
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 
-#include "../Include/stb_image.h"
-#include "../Include/stb_image_write.h"
 
-
+#include "../Include/Headers.h"
+#include "../Include/Stb.h"
 #include "../Include/Image.h"
-
+#include "../Include/MathFunc.h"
 
 
 Image::Image(const char* filename, int channel_force) {
@@ -83,4 +81,93 @@ ImageType Image::get_file_type(const char* filename) {
 		}
 	}
 	return PNG;
+}
+
+
+//------------------------//
+//------- Effets --------//
+//----------------------//
+
+
+Image& Image::grayscale_avg()
+{
+	float gray = 0;
+
+	if(channels < 3)
+	{
+		printf("Image %p has less than 3 channels !", this);
+	}
+	else
+	{
+		for(int i = 0; i< size; i+=channels)
+		{
+			gray = (data[i] + data[i+1] + data[i+2]) / 3;
+			memset(data+i, (int)gray, 3); // Fonction qui permet d'attribuer pour chaque channels la valeur gray
+		}
+	}
+	return *this;
+}
+
+
+Image& Image::grayscale_lum()
+{
+	float gray = 0;
+
+	if(channels < 3)
+	{
+		printf("Image %p has less than 3 channels !", this);
+	}
+	else
+	{
+		for(int i = 0; i< size; i+=channels)
+		{
+			gray = data[i] * 0.2627 + data[i+1] * 0.6780 + data[i+2] * 0.0593;
+			memset(data+i, (int)gray, 3); // Fonction qui permet d'attribuer pour chaque channels la valeur gray
+		}
+	}
+	return *this;
+}
+
+
+Image& Image::inverse()
+{
+	if(channels < 3)
+	{
+		printf("Image %p has less than 3 channels !", this);
+	}
+	else
+	{
+		for(int i = 0; i< size; i+= channels)
+		{
+			data[i] = 255 - data[i];
+			data[i+1] = 255 - data[i+1];
+			data[i+2] = 255 - data[i+2];
+		}
+	}
+	return *this;
+}
+
+
+Image& Image::treshold()
+{
+	float gray;
+	float b;
+	float t;
+
+	if(channels < 3)
+	{
+		printf("Image %p has less than 3 channels !", this);
+	}
+	else
+	{
+		for(int i = 0; i< size; i+= channels)
+		{
+			gray = (data[i] + data[i+1] + data[i+2]) / 3;
+			b = lerp(0.0, 255.0, step(100, gray));
+			t = (data[i] + data[i+1] + data[i+2]) * b;
+
+			memset(data+i, (int)t, 3);
+		}
+	}
+	return *this;
 }

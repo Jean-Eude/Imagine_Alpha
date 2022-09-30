@@ -1,5 +1,7 @@
-#include <stdint.h>
-#include <cstdio>
+#ifndef IMAGE_H
+#define IMAGE_H
+
+#include "Headers.h"
 
 enum ImageType
 {
@@ -7,14 +9,9 @@ enum ImageType
 };
 
 
-
-struct Image
+class Image
 {
-	uint8_t* data = NULL;
-	size_t size = 0;
-	int w;
-	int h;
-	int channels;
+public:
 
 	Image(const char* filename, int channel_force = 0);
 	Image(int w, int h, int channels = 3);
@@ -24,6 +21,20 @@ struct Image
 	bool read(const char* filename, int channel_force = 0);
 	bool write(const char* filename);
 
-	ImageType get_file_type(const char* filename);
+	ImageType get_file_type(const char* filename);	
+
+
+	Image& grayscale_avg();
+	Image& grayscale_lum();
+	Image& inverse();	
+	Image& treshold();
+
+
+	uint8_t* data = NULL;
+	size_t size = 0;
+	int w;
+	int h;
+	int channels;
 };
 
+#endif

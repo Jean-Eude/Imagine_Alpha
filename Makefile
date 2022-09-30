@@ -1,10 +1,13 @@
 SRC = ./src/main.cpp \
-      ./src/Image.cpp
+      ./src/Image.cpp \
+      ./src/Headers.cpp \
+      ./src/Stb.cpp \
+      ./src/MathFunc.cpp
+
 
 OBJ = $(SRC:.cpp=.o)
 CFLAGS += -std=c++17 -Werror -Wextra -I./include
 NAME = main.exe
-
 
 
 $(NAME): $(OBJ)
