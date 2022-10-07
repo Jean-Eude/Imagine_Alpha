@@ -23,18 +23,41 @@ public:
 
 	ImageType get_file_type(const char* filename);	
 
-
-	Image& grayscale_avg();
-	Image& grayscale_lum();
-	Image& inverse();	
-	Image& treshold();
-
-
 	uint8_t* data = NULL;
 	size_t size = 0;
 	int w;
 	int h;
 	int channels;
+
+
+
+	//------------------------//
+	//------- Effets --------//
+	//----------------------//
+	
+	Image& grayscale_avg();
+	Image& grayscale_lum();
+	Image& inverse();	
+	Image& bgr();	
+	Image& treshold(int treshold);
+	Image& brightness(int brightness);
+	Image& contrast(int contrast);
+	Image& ContrastAndBrightness(int contrast, int brightness);
+	Image& saturation(double alpha);
+	Image& solarize(int trsR, int trsG, int trsB, bool sabbatier);
+	Image& gamma(double gamma);
+
+	//------------------------------------------//
+	//------- Modifications de l'image --------//
+	//----------------------------------------//
+
+	Image& flipX();
+	Image& flipY();
+
+	//------------------------------//
+	//------- Convolutions --------//
+	//----------------------------//
+
 };
 
 #endif

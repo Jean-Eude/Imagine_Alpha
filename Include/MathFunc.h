@@ -11,5 +11,6 @@ float min(float a, float b);
 float max(float a, float b);
 float length(float x);
 float normalize(float channel_input);
+int truncate(int value);
 
 #endif

@@ -7,6 +7,9 @@
 #include <math.h>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <cstring>  
+
 
 
 #endif
