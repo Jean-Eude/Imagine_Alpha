@@ -1,5 +1,5 @@
-#ifndef MATHFUNC_H
-#define MATHFUNC_H
+#ifndef _MATHFUNC_H_
+#define _MATHFUNC_H_
 
 
 float clamp(float x, float min, float max);

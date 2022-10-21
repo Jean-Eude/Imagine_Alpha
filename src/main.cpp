@@ -4,6 +4,11 @@
 
 int main(int argc, char **argv)
 {
+	//------------------------//
+	//------- Effets --------//
+	//----------------------//
+
+	/*
 	Image ImgGray_avg("Ressources/Img.jpg");   // Définir une image pour chaque effet / filtre car sinon -> erreur mémoire (application des effets par dessus le 1er effet)
 	Image ImgLum_lum("Ressources/Img.jpg");
 	Image ImgInv_inv("Ressources/Img.jpg");
@@ -15,21 +20,10 @@ int main(int argc, char **argv)
 	Image ImgSat_sat("Ressources/Img.jpg");
 	Image ImgSol_sol("Ressources/Img.jpg");
 	Image ImgGma_gma("Ressources/Img.jpg");
-
-
-	Image ImgFlipX("Ressources/Img.jpg");
-	Image ImgFlipY("Ressources/Img.jpg");
-
-
-	Image ImgCon("Ressources/Img.jpg");
-
-	//------------------------//
-	//------- Effets --------//
-	//----------------------//
-
-
+	Image ImgHuePerso_hue("Ressources/Img.jpg");
 	ImgGray_avg.grayscale_avg();
 	ImgGray_avg.write("Ressources/gray_avg.jpg");
+
 
 	ImgLum_lum.grayscale_lum();
 	ImgLum_lum.write("Ressources/gray_lum.jpg");
@@ -61,9 +55,27 @@ int main(int argc, char **argv)
 	ImgGma_gma.gamma(2.0);  
 	ImgGma_gma.write("Ressources/gamma.jpg");
 
+	ImgHuePerso_hue.huePerso(2);  
+	ImgHuePerso_hue.write("Ressources/huePerso.jpg");
+
+	//---------------------------------//
+	//------- Effets Spéciaux --------//
+	//-------------------------------//
+
+	Image ImgSep_sep("Ressources/Img.jpg");
+
+
+	ImgSep_sep.sepia();  
+	ImgSep_sep.write("Ressources/sepia.jpg");
+
 	//------------------------------------------//
 	//------- Modifications de l'image --------//
 	//----------------------------------------//
+
+	Image ImgFlipX("Ressources/Img.jpg");
+	Image ImgFlipY("Ressources/Img.jpg");
+	Image ImgScale("Ressources/treshold.jpg");
+
 
 	ImgFlipX.flipX();
 	ImgFlipX.write("Ressources/FlipX.jpg");
@@ -71,11 +83,32 @@ int main(int argc, char **argv)
 	ImgFlipY.flipY();
 	ImgFlipY.write("Ressources/FlipY.jpg");
 
+	ImgScale.rescaleXY(400, 400);
+	ImgScale.write("Ressources/Scale.jpg");
+	*/
+
 	//------------------------------//
 	//------- Convolutions --------//
 	//----------------------------//
 
 
+
+	//------------------------//
+	//------- Others --------//
+	//----------------------//
+
+	Image Img_BMGG_bsgg(1920, 1080, 3);
+	Image Img_BMCG_bscg(1920, 1080, 3);
+	Image Img_GG_gg(1920, 1080, 3);
+
+	Img_BMGG_bsgg.BasicMultGreyGradients();
+	Img_BMGG_bsgg.write("Ressources/BasicMultGreyGradients.jpg");
+
+	Img_BMCG_bscg.BasicMultColorGradients();
+	Img_BMCG_bscg.write("Ressources/BasicMultColorGradients.jpg");
+
+	Img_GG_gg.GreyGradient();
+	Img_GG_gg.write("Ressources/test.jpg");
 
 	return 0;
 }

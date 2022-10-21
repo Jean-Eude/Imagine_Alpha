@@ -1,5 +1,5 @@
-#ifndef IMAGE_H
-#define IMAGE_H
+#ifndef _IMAGE_H_
+#define _IMAGE_H_
 
 #include "Headers.h"
 
@@ -30,7 +30,6 @@ public:
 	int channels;
 
 
-
 	//------------------------//
 	//------- Effets --------//
 	//----------------------//
@@ -46,6 +45,13 @@ public:
 	Image& saturation(double alpha);
 	Image& solarize(int trsR, int trsG, int trsB, bool sabbatier);
 	Image& gamma(double gamma);
+	Image& huePerso(double levels);
+
+	//---------------------------------//
+	//------- Effets Spéciaux --------//
+	//-------------------------------//
+
+	Image& sepia();
 
 	//------------------------------------------//
 	//------- Modifications de l'image --------//
@@ -53,11 +59,23 @@ public:
 
 	Image& flipX();
 	Image& flipY();
+	Image& rescaleXY(int newHeight, int newWidth);
 
 	//------------------------------//
 	//------- Convolutions --------//
 	//----------------------------//
 
+	Image& std_convolve_clamp_to_0(uint8_t channel, uint32_t ker_w, uint32_t ker_h, double ker[], uint32_t cr, uint32_t cc);
+	Image& std_convolve_clamp_to_border(uint8_t channel, uint32_t ker_w, uint32_t ker_h, double ker[], uint32_t cr, uint32_t cc);
+	Image& std_convolve_cyclic(uint8_t channel, uint32_t ker_w, uint32_t ker_h, double ker[], uint32_t cr, uint32_t cc);
+
+	//------------------------//
+	//------- Others --------//
+	//----------------------//
+
+	Image& BasicMultGreyGradients();
+	Image& BasicMultColorGradients();
+	Image& GreyGradient();
 };
 
 #endif

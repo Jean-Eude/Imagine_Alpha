@@ -35,13 +35,7 @@ float smoothStep(float edge0, float edge1, float x)
 {
 	x = clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
 
-	return x * x * x * (x * (x * 6 - 15) + 10);
-}
-
-
-float invSmoothstep(float x)
-{
-	return 0.5 - sin(asin(1.0 - 2.0 * x) / 3.0);
+	return x * x * (3.0 - 2.0 * x);
 }
 
 
@@ -73,17 +67,6 @@ float max(float a, float b)
 	return b;
 }
 
-
-float length(float x, float y, float z)
-{
-	return sqrt(x*x + y*y + z*z);
-}
-
-
-float normalize(float channel_input)
-{
-	return 255 * (channel_input - 0 / 255 - 0);
-}
 
 int truncate(int value)  // == fonction clamp mais avec un seul paramètre
 {
