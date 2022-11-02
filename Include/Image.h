@@ -59,6 +59,7 @@ public:
 
 	Image& flipX();
 	Image& flipY();
+	Image& CutIn2();
 	Image& rescaleXY(int newHeight, int newWidth);
 
 	//------------------------------//
@@ -69,13 +70,51 @@ public:
 	Image& std_convolve_clamp_to_border(uint8_t channel, uint32_t ker_w, uint32_t ker_h, double ker[], uint32_t cr, uint32_t cc);
 	Image& std_convolve_cyclic(uint8_t channel, uint32_t ker_w, uint32_t ker_h, double ker[], uint32_t cr, uint32_t cc);
 
-	//------------------------//
-	//------- Others --------//
-	//----------------------//
+	//------------------------------------------//
+	//------- Others (Creating Images) --------//
+	//----------------------------------------//
 
-	Image& BasicMultGreyGradients();
-	Image& BasicMultColorGradients();
-	Image& GreyGradient();
+	Image& UniformColorBW(int BW);
+	Image& UniformColorRGB(int r, int g, int b);
+	Image& UniformGreyGradient();
+	Image& UniformRGBGradient(int r, int g, int b);
+	Image& LinearGradient(Vector3 col1, Vector3 col2);
+	Image& ThreeColorsGradient(Vector3 col1, Vector3 col2, Vector3 col3, double length);
+	Image& UVGradient();
+
+	//-----------------------------------------------//
+	//------- Others (Differents fonctions) --------//
+	//-- https://thebookofshaders.com/05/?lan=fr --//
+	//--------------------------------------------//
+
+	Image& StepExample(double k);
+	Image& SmoothstepExample(double k1, double k2);
+	Image& SinExample();
+	Image& CosExample();
+	Image& ModExample(double k);
+	Image& FracExample();
+	Image& CeilExample();
+	Image& FloorExample();
+	Image& SignExample();
+	Image& AbsExample();
+
+
+
+	Image& SincExample(double k);
+	Image& PowerCurveExample(double a, double b);
+	Image& ParabolaExample(double k);
+	Image& GainExample(double k);
+	Image& ExpStepExample(double k, double n);
+	Image& CubicPulseExample(double k, double w);
+	Image& ExpSustainedImpulseExample(double f, double k);
+	Image& PolyImpulseExample(double k, double n);
+	Image& ExpImpulseExample(double k);
+	Image& SmoothstepIntegralExample(double T);
+	Image& UnitIdentityExample();
+	
+	// Advanced Functions --> https://iquilezles.org/articles/functions/
+
+
 };
 
 #endif

@@ -8,7 +8,7 @@ SRC = ./src/main.cpp \
 
 
 OBJ = $(SRC:.cpp=.o)
-CFLAGS += -std=c++17 -Wall -Werror -Wextra -E -P -I./include
+CFLAGS += -std=c++17 -Wall -Werror -Wextra -lm -E -P -I./include
 NAME = main.exe
 
 
