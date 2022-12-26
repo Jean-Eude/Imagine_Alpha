@@ -904,31 +904,6 @@ Image& Image::ThreeColorsGradient(Vector3 col1, Vector3 col2, Vector3 col3, doub
 }
 
 
-Image& Image::UVGradient()   // Gradient entre le blanc et le noir
-{
-	double c1, c2;
-
-	if(channels < 3)
-	{
-		printf("Image %p has less than 3 channels !", this);
-	}
-	else
-	{
-		for(int i=0; i < h; i+=channels) 
-		{
-			for(int j=0; j < w; j+=channels) 
-			{
-				uint64_t pixel = getPixel(i, j, data);
-
-				data[i] = (uint8_t)  (pixel * 255);						
-				data[i+1] = (uint8_t)  (pixel * 255);						
-				data[i+2] = (uint8_t)  (0);
-			}
-		}
-	}
-	return *this;		// OK
-}
-
 //-----------------------------------------------//
 //------- Others (Differents fonctions) --------//
 //-- https://thebookofshaders.com/05/?lan=fr --//

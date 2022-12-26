@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	//------- Effets --------//
 	//----------------------//
 
-	/*
+
 	Image ImgGray_avg("Ressources/Img.jpg");   // Définir une image pour chaque effet / filtre car sinon -> erreur mémoire (application des effets par dessus le 1er effet)
 	Image ImgLum_lum("Ressources/Img.jpg");
 	Image ImgInv_inv("Ressources/Img.jpg");
@@ -64,10 +64,12 @@ int main(int argc, char **argv)
 	//------- Effets Spéciaux --------//
 	//-------------------------------//
 
+
 	Image ImgSep_sep("Ressources/Img.jpg");
 
 	ImgSep_sep.sepia();  
 	ImgSep_sep.write("Ressources/Image_Processing/sepia.jpg");
+
 
 	//------------------------------------------//
 	//------- Modifications de l'image --------//
@@ -93,7 +95,7 @@ int main(int argc, char **argv)
 	ImgScale.rescaleXY(400, 400);
 	ImgScale.write("Ressources/Image_Processing/Scale.jpg");
 	
-	*/
+
 
 	//------------------------------//
 	//------- Convolutions --------//
@@ -138,10 +140,6 @@ int main(int argc, char **argv)
 	Vector3 color32(0, 0, 255);
 	Img_3LN_3ln.ThreeColorsGradient(color12, color22, color32, 0.5);
 	Img_3LN_3ln.write("Ressources/Generative_Art/3ColorsGradient.jpg");
-
-
-	Img_UVG_uvg.UVGradient();
-	Img_UVG_uvg.write("Ressources/Generative_Art/UVGradient.jpg");
 	
 	
 	//-----------------------------------------------//
